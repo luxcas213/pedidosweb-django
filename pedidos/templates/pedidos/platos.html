@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Platos</title>
+</head>
+<body>
+    <h1>Platos</h1>
+    <ul>
+        {% for plato in platos %}
+            <li>
+                {{ plato.nombre }} - ${{ plato.precio }} - 
+                <a href="{% url 'getplato' plato.id %}">Ver Detalles</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'getpedidos' %}">
+        <button>Volver a Pedidos</button>
+    </a>
+    <a href="{% url 'createplato' %}">
+        <button>Crear Plato</button>
+    </a>
+</body>
+</html>

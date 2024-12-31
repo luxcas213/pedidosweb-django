@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Actualizar Plato</title>
+</head>
+<body>
+    <h1>Actualizar Plato</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Actualizar Plato</button>
+    </form>
+    <a href="{% url 'getplatos' %}">Volver a la lista de platos</a>
+</body>
+</html>

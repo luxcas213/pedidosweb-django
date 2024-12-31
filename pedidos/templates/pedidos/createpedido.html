@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Pedido</title>
+</head>
+<body>
+    <h1>Crear Pedido</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ pedido_form.as_p }}
+        
+        <h2>Seleccionar Platos:</h2>
+        <div id="platos-container">
+            {% for plato in platos %}
+                <div>
+                    <input type="checkbox" name="platos" value="{{ plato.id }}">
+                    {{ plato.nombre }} - ${{ plato.precio }}
+                    <input type="number" name="cantidades" min="1" value="1">
+                </div>
+            {% endfor %}
+        </div>
+        
+        <button type="submit">Guardar Pedido</button>
+        <a href="{% url 'getpedidos' %}">
+            <button type="button">Cancelar</button>
+        </a>
+    </form>
+</body>
+</html>

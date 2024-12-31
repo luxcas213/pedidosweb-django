@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Pedidos</title>
+</head>
+<body>
+    <h1>Pedidos</h1>
+    <ul>
+        {% for pedido in pedidos %}
+            <li>
+                Pedido #{{ pedido.id }} - {{ pedido.fecha }} - {{ pedido.estado }}
+                <ul>
+                    {% for detalle in pedido.platosxpedidos_set.all %}
+                        <li>{{ detalle.plato.nombre }} - Cantidad: {{ detalle.cantidad }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <a href="{% url 'cambiarestado' pedido.id %}">
+                <button>
+                    {% if pedido.estado == 'P' %}
+                        Marcar como entregado
+                    {% else %}
+                        Marcar como pendiente
+                    {% endif %}
+                </button>
+            </a>
+            <a href="{% url 'deletepedido' pedido.id %}">
+                <button>Eliminar</button>
+            </a>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'createpedido' %}">
+        <button>Crear Pedido</button>
+    </a>
+    <a href="{% url 'getplatos' %}">
+        <button>Ver Platos</button>
+    </a>
+</body>
+</html>

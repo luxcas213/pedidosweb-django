@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ plato.nombre }}</title>
+</head>
+<body>
+    <h1>{{ plato.nombre }}</h1>
+    <p><strong>Tipo:</strong> {{ plato.tipo }}</p>
+    <p><strong>Precio:</strong> ${{ plato.precio }}</p>
+    <p><strong>Descripción:</strong> {{ plato.descripcion }}</p>
+    <a href="{% url 'getplatos' %}">Volver a la lista de platos</a>
+</body>
+</html>

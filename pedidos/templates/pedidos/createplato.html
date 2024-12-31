@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Plato</title>
+</head>
+<body>
+    <h1>Crear Plato</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Crear Plato</button>
+    </form>
+    <a href="{% url 'getplatos' %}">
+        <button type="button">Cancelar</button>
+    </a>
+</body>
+</html>
